@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechNova Infinium | Where Innovation Scales Infinitely</title>
+    <style>
+        
+        /* --- 1. GLOBAL VARIABLES & RESET --- */
+        :root {
+            --primary-blue: #003366; /* Deep Space Blue - Trust */
+            --accent-teal: #00CED1;  /* Electric Teal - Innovation */
+            --dark-grey: #333333;    /* Text */
+            --light-grey: #f4f7f6;   /* Backgrounds */
+            --white: #ffffff;
+            --gradient-hero: linear-gradient(135deg, #001f3f 0%, #003366 100%);
+            --font-heading: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            --font-body: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth; /* Smooth scrolling for anchors */
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--dark-grey);
+            line-height: 1.6;
+            background-color: var(--white);
+            overflow-x: hidden;
+        }
+
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        ul { list-style: none; }
+        img { max-width: 100%; height: auto; }
+
+        /* --- 2. NAVIGATION BAR --- */
+        nav {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 1.6rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+        
+        .logo img {
+            width: 60px;
+            height: auto;
+            display: block;
+            border-radius: 6px;
+        }
+
+        .logo span { color: var(--accent-teal); }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-size: 0.95rem;
+            font-weight: 500;
+            opacity: 0.9;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-teal);
+            opacity: 1;
+        }
+
+        .btn-nav {
+            background-color: var(--accent-teal);
+            color: var(--primary-blue);
+            padding: 0.6rem 1.4rem;
+            border-radius: 4px;
+            font-weight: 700;
+            transition: transform 0.2s ease;
+        }
+
+        .btn-nav:hover {
+            background-color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        /* Mobile Menu Toggle (Hidden on Desktop) */
+        .menu-toggle { display: none; font-size: 1.5rem; cursor: pointer; }
+
+        /* --- 3. HERO SECTION --- */
+        .hero {
+            background: var(--gradient-hero);
+            color: var(--white);
+            padding: 8rem 5% 6rem;
+            text-align: center;
+            min-height: 85vh; /* Takes up most of the screen */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Decorative Background Elements */
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 300px; height: 300px;
+            background: rgba(0, 206, 209, 0.1);
+            border-radius: 50%;
+            top: -50px; left: -50px;
+            filter: blur(50px);
+        }
+
+        .hero h1 {
+            font-family: var(--font-heading);
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            font-weight: 800;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            max-width: 750px;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-teal);
+            color: var(--primary-blue);
+            padding: 1rem 2.5rem;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            border: 2px solid var(--accent-teal);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--white);
+            padding: 1rem 2.5rem;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            border: 2px solid var(--white);
+        }
+
+        .btn-primary:hover {
+            background-color: transparent;
+            color: var(--accent-teal);
+            box-shadow: 0 0 15px rgba(0,206,209,0.3);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--white);
+            color: var(--primary-blue);
+        }
+
+        /* --- 4. STATS STRIP --- */
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            background-color: var(--white);
+            padding: 4rem 5%;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-top: -3rem; /* Overlap effect */
+            position: relative;
+            z-index: 10;
+            border-radius: 8px;
+            width: 90%;
+            margin-left: auto; margin-right: auto;
+        }
+
+        .stat-item h3 {
+            font-size: 2.8rem;
+            color: var(--primary-blue);
+            font-weight: 800;
+            margin-bottom: 0.2rem;
+        }
+
+        .stat-item p {
+            font-size: 1rem;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        /* --- 5. ABOUT COMPANY --- */
+        .section-padding { padding: 6rem 5%; }
+        .bg-light { background-color: var(--light-grey); }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .section-line {
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent-teal);
+            margin: 0 auto;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 4rem;
+            align-items: flex-start;
+        }
+
+        .about-text h3 {
+            font-size: 1.8rem;
+            color: var(--dark-grey);
+            margin-bottom: 1.5rem;
+        }
+        
+        .about-text p { margin-bottom: 1rem; color: #555; }
+
+        .timeline-box {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 12px;
+            border-left: 5px solid var(--accent-teal);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+
+        .timeline-item {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .timeline-item:last-child { border-bottom: none; margin-bottom: 0; }
+
+        .timeline-year {
+            color: var(--accent-teal);
+            font-weight: 800;
+            font-size: 1.2rem;
+        }
+        
+        /* --- 6. SERVICES --- */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 2.5rem 2rem;
+            border-radius: 10px;
+            border: 1px solid #eee;
+            transition: 0.3s;
+            text-align: left;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0, 51, 102, 0.1);
+            border-color: var(--accent-teal);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            background: var(--light-grey);
+            width: 70px; height: 70px;
+            line-height: 70px;
+            text-align: center;
+            border-radius: 50%;
+        }
+
+        .service-card h3 {
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        /* --- 7. LEADERSHIP (TEAM) --- */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .team-card {
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .team-card:hover { transform: translateY(-5px); }
+
+        .member-img-placeholder {
+            height: 120px;
+            background: linear-gradient(to right, #e0eafc, #cfdef3);
+            position: relative;
+        }
+
+        .member-avatar {
+            width: 100px;
+            height: 100px;
+            background-color: var(--white);
+            border: 3px solid var(--white);
+            border-radius: 50%;
+            margin: -50px auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+        }
+
+        .team-info { padding: 0 1.5rem 2rem; }
+        
+        .team-info h3 { color: var(--primary-blue); margin-bottom: 0.2rem; }
+        .team-info .role { color: var(--accent-teal); font-weight: 700; font-size: 0.9rem; margin-bottom: 1rem; display: block; text-transform: uppercase; }
+        .team-info p { font-size: 0.9rem; color: #666; }
+
+        /* --- 8. CAREERS SECTION --- */
+        .careers-cta {
+            background: var(--primary-blue);
+            color: var(--white);
+            border-radius: 15px;
+            padding: 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .careers-cta h2 { font-size: 2.5rem; margin-bottom: 1.5rem; }
+        .careers-cta p { max-width: 600px; margin: 0 auto 2rem; font-size: 1.1rem; opacity: 0.9; }
+
+        /* --- OPEN POSITIONS --- */
+        .positions-section { padding: 4rem 5%; }
+        .positions-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
+        .position-card { background: var(--white); border-radius: 10px; padding: 1.5rem; border: 1px solid #eee; box-shadow: 0 5px 15px rgba(0,0,0,0.03); }
+        .position-header { display: flex; justify-content: space-between; align-items: center; gap: 1rem; margin-bottom: 0.75rem; }
+        .position-title { font-size: 1.1rem; color: var(--primary-blue); margin: 0; }
+        .openings-badge { background: var(--accent-teal); color: var(--white); padding: 0.35rem 0.8rem; border-radius: 20px; font-weight: 700; font-size: 0.9rem; }
+        .qual-list { margin-top: 0.5rem; color: #555; padding-left: 1rem; }
+        .qual-list li { margin-bottom: 0.5rem; }
+
+        /* --- 9. CONTACT FORM --- */
+        .contact-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4rem;
+            justify-content: center;
+        }
+
+        .contact-info, .contact-form-wrapper {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .info-box {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 2rem;
+        }
+        
+        .info-icon {
+            background: var(--accent-teal);
+            color: var(--primary-blue);
+            width: 50px; height: 50px;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            margin-right: 1.5rem;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .form-group { margin-bottom: 1.5rem; }
+        
+        .form-control {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: 0.3s;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 3px rgba(0, 51, 102, 0.1);
+        }
+
+        /* --- 10. FOOTER --- */
+        footer {
+            background-color: #111;
+            color: #aaa;
+            padding: 4rem 5% 2rem;
+            font-size: 0.9rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-col h4 { color: var(--white); margin-bottom: 1.5rem; font-size: 1.2rem; }
+        .footer-col ul li { margin-bottom: 0.8rem; }
+        .footer-col ul li a:hover { color: var(--accent-teal); padding-left: 5px; }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #333;
+        }
+
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .nav-links { display: none; } /* Add JS toggle for real implementation */
+            .menu-toggle { display: block; }
+            .about-grid { grid-template-columns: 1fr; }
+            .stats { flex-direction: column; gap: 2rem; padding: 2rem; margin-top: 2rem; width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. NAVIGATION -->
+    <nav>
+        <a href="#home" class="logo">
+            <img src="logo.png" alt="TechNova Infinium logo">
+            <span>TechNova <span style="color: var(--accent-teal);">Infinium</span></span>
+        </a>
+        <div class="menu-toggle">☰</div> <!-- Mobile Menu Icon -->
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#team">Leadership</a></li>
+            <li><a href="#careers">Careers</a></li>
+        </ul>
+        <a href="#contact" class="btn-nav">Contact Us</a>
+    </nav>
+
+    <!-- 2. HERO SECTION -->
+    <section id="home" class="hero">
+        <h1>Where Innovation Scales <br><span style="color: var(--accent-teal);">Infinitely</span></h1>
+        <p>Empowering global enterprises with future-ready IT solutions. <br>From Cloud Architecture to AI-driven Digital Transformation.</p>
+        <div class="cta-buttons">
+            <a href="#services" class="btn-primary">Explore Solutions</a>
+            <a href="#careers" class="btn-outline">We Are Hiring</a>
+        </div>
+    </section>
+
+    <!-- 3. STATS STRIP -->
+    <div class="stats">
+        <div class="stat-item">
+            <h3>10+</h3>
+            <p>Years Experience</p>
+        </div>
+        <div class="stat-item">
+            <h3>50+</h3>
+            <p>Enterprise Clients</p>
+        </div>
+        <div class="stat-item">
+            <h3>100+</h3>
+            <p>Projects Delivered</p>
+        </div>
+        <div class="stat-item">
+            <h3>200+</h3>
+            <p>Tech Experts</p>
+        </div>
+    </div>
+
+    <!-- 4. ABOUT COMPANY -->
+    <section id="about" class="section-padding">
+        <div class="section-header">
+            <h2>Who We Are</h2>
+            <div class="section-line"></div>
+        </div>
+        <div class="about-grid">
+            <div class="about-text">
+                <h3>Driven by Purpose, Powered by Tech.</h3>
+                <p><strong>TechNova Infinium Pvt. Ltd.</strong> was founded on September 19, 2015, in Bangalore with a singular mission: to empower businesses through innovative, scalable, and future-ready IT solutions.</p>
+                <p>What began as a boutique consulting firm has evolved into a mid-sized digital powerhouse. The name <strong>"TechNova"</strong> represents new-age technology, while <strong>"Infinium"</strong> stands for infinite possibilities. Together, they define our commitment to limitless growth.</p>
+                <p>We don't just act as vendors; we are strategic partners who bridge the gap between complex business problems and elegant technical solutions.</p>
+                <br>
+                <a href="#contact" style="color: var(--primary-blue); font-weight: bold; border-bottom: 2px solid var(--accent-teal);">Read Our Vision Statement &rarr;</a>
+            </div>
+            
+            <div class="timeline-box">
+                <div class="timeline-item">
+                    <div class="timeline-year">2018</div>
+                    <p>Founded in Bangalore as a custom software firm.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2020</div>
+                    <p>Expanded into Cloud Computing & Mobile Apps.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2022</div>
+                    <p>Crossed 50+ Enterprise Clients Milestone.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2025</div>
+                    <p>Launching AI-driven Business Solutions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. SERVICES -->
+    <section id="services" class="section-padding bg-light">
+        <div class="section-header">
+            <h2>Our Expertise</h2>
+            <div class="section-line"></div>
+            <p style="margin-top:1rem;">End-to-end digital solutions for modern businesses.</p>
+        </div>
+        
+        <div class="services-grid">
+            <!-- Service 1 -->
+            <div class="service-card">
+                <div class="service-icon">💻</div>
+                <h3>App Development</h3>
+                <p>Scalable web and mobile applications built on robust stacks (React, Node, Python) designed for high performance.</p>
+            </div>
+            <!-- Service 2 -->
+            <div class="service-card">
+                <div class="service-icon">☁️</div>
+                <h3>Cloud & DevOps</h3>
+                <p>Secure migration and architecture on AWS & Azure. We ensure 99.99% uptime and infinite scalability for your data.</p>
+            </div>
+            <!-- Service 3 -->
+            <div class="service-card">
+                <div class="service-icon">🤖</div>
+                <h3>AI & Analytics</h3>
+                <p>Turning raw data into actionable insights using Machine Learning and predictive analytics to drive decisions.</p>
+            </div>
+            <!-- Service 4 -->
+            <div class="service-card">
+                <div class="service-icon">📈</div>
+                <h3>Strategic Consulting</h3>
+                <p>Digital roadmaps for Startups and SMEs. We align technology investments directly with revenue goals.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. LEADERSHIP -->
+    <section id="team" class="section-padding">
+        <div class="section-header">
+            <h2>Meet The Leadership</h2>
+            <div class="section-line"></div>
+        </div>
+
+        <div class="team-grid">
+            <!-- Leader 1 -->
+            <div class="team-card">
+                <div class="member-img-placeholder"></div>
+                <div class="member-avatar">👔</div>
+                <div class="team-info">
+                    <h3>Amit V.</h3>
+                    <span class="role">Founder & CEO</span>
+                    <p>Driving the strategic vision of TechNova with a focus on sustainable growth and global expansion.</p>
+                </div>
+            </div>
+            <!-- Leader 2 -->
+            <div class="team-card">
+                <div class="member-img-placeholder"></div>
+                <div class="member-avatar">⚙️</div>
+                <div class="team-info">
+                    <h3>Priya S.</h3>
+                    <span class="role">Chief Architect</span>
+                    <p>Leading cloud & AI initiatives, ensuring our tech stack remains cutting-edge and scalable.</p>
+                </div>
+            </div>
+            <!-- Leader 3 -->
+            <div class="team-card">
+                <div class="member-img-placeholder"></div>
+                <div class="member-avatar">🚀</div>
+                <div class="team-info">
+                    <h3>Rohan K.</h3>
+                    <span class="role">Head of Delivery</span>
+                    <p>Ensuring client success through agile methodologies and on-time project delivery.</p>
+                </div>
+            </div>
+            <!-- Leader 4 -->
+            <div class="team-card">
+                <div class="member-img-placeholder"></div>
+                <div class="member-avatar">🤝</div>
+                <div class="team-info">
+                    <h3>Anjali M.</h3>
+                    <span class="role">Head of HR</span>
+                    <p>Building a people-first culture where innovation and employee well-being go hand in hand.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. CAREERS -->
+    <section id="careers" class="section-padding bg-light">
+        <div class="careers-cta">
+            <h2>Grow Faster Than The Industry</h2>
+            <p>At TechNova, you aren't just a number. You are a key driver in a company that is scaling. We offer the stability of an established firm with the agility of a startup.</p>
+            <a href="#open-positions" class="btn-outline">View Open Positions</a>
+        </div>
+    </section>
+
+    <!-- OPEN POSITIONS -->
+    <section id="open-positions" class="section-padding">
+        <div class="section-header">
+            <h2>Open Positions</h2>
+            <div class="section-line"></div>
+            <p style="margin-top:1rem;">We're constantly growing — below are our current openings. Apply by emailing <strong>careers@technovainfinium.com</strong>.</p>
+        </div>
+
+        <div class="positions-grid">
+            <div class="position-card">
+                <div class="position-header">
+                    <h3 class="position-title">Business Development Manager</h3>
+                    <div class="openings-badge">3 openings</div>
+                </div>
+                <ul class="qual-list">
+                    <li>MBA or PGDM in Marketing or Sales, Engineering or IT background preferred</li>
+                </ul>
+            </div>
+
+            <div class="position-card">
+                <div class="position-header">
+                    <h3 class="position-title">Software Engineer</h3>
+                    <div class="openings-badge">5 openings</div>
+                </div>
+                <ul class="qual-list">
+                    <li>Engineering degree in CSE</li>
+                </ul>
+            </div>
+
+            <div class="position-card">
+                <div class="position-header">
+                    <h3 class="position-title">HR Executive</h3>
+                    <div class="openings-badge">2 openings</div>
+                </div>
+                <ul class="qual-list">
+                    <li>MBA or PGDM in HRM, Candidates with 1-2 years of IT recruitment preferred</li>
+                </ul>
+            </div>
+
+            <div class="position-card">
+                <div class="position-header">
+                    <h3 class="position-title">Project Manager</h3>
+                    <div class="openings-badge">4 openings</div>
+                </div>
+                <ul class="qual-list">
+                    <li>Bachelors degree in engineering, 1-4 years of exp. in project coordination, agile delivery and scrum roles</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. CONTACT US -->
+    <section id="contact" class="section-padding">
+        <div class="section-header">
+            <h2>Get In Touch</h2>
+            <div class="section-line"></div>
+            <p style="margin-top:1rem;">Ready to innovate? Let's discuss your next project.</p>
+        </div>
+
+        <div class="contact-container">
+            <!-- Info Side -->
+            <div class="contact-info">
+                <div class="info-box">
+                    <div class="info-icon">📍</div>
+                    <div>
+                        <h4>Headquarters</h4>
+                        <p>TechNova Towers, Electronic City Phase 1,<br>Bangalore, Karnataka - 560100</p>
+                    </div>
+                </div>
+                <div class="info-box">
+                    <div class="info-icon">📧</div>
+                    <div>
+                        <h4>Email Us</h4>
+                        <p>contact@technovainfinium.com<br>careers@technovainfinium.com</p>
+                    </div>
+                </div>
+                <div class="info-box">
+                    <div class="info-icon">📞</div>
+                    <div>
+                        <h4>Call Us</h4>
+                        <p>+91 80 1234 5678<br>Mon-Fri, 9am - 6pm</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Form Side -->
+            <div class="contact-form-wrapper">
+                <form action="#" method="POST">
+                    <div class="form-group">
+                        <input type="text" name="name" class="form-control" placeholder="Your Full Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" class="form-control" placeholder="Your Email Address" required>
+                    </div>
+                    <div class="form-group">
+                        <select name="service" class="form-control">
+                            <option value="General Inquiry">General Inquiry</option>
+                            <option value="Project Discussion">Start a Project</option>
+                            <option value="Job Application">Job Application</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <textarea name="message" rows="5" class="form-control" placeholder="How can we help you?" required></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary" style="width: 100%; border:none; cursor:pointer;">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- 9. FOOTER -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <div class="logo" style="color: white; margin-bottom: 1rem;">TechNova <span>Infinium</span></div>
+                <p>Your trusted partner for Digital Transformation. We build the technology that powers the future.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#team">Leadership</a></li>
+                    <li><a href="#careers">Careers</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="#">App Development</a></li>
+                    <li><a href="#">Cloud Solutions</a></li>
+                    <li><a href="#">AI & Analytics</a></li>
+                    <li><a href="#">IT Consulting</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Connect</h4>
+                <ul>
+                    <li><a href="#">LinkedIn</a></li>
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="#">Facebook</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 TechNova Infinium Pvt. Ltd. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
